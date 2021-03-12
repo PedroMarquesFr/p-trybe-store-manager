@@ -1,7 +1,8 @@
 require('dotenv').config();
 
 const express = require('express');
-const { add, getAll, getById, edit, del } = require('./controllers/productContro');
+const productContro = require('./controllers/productContro');
+const saleContro = require('./controllers/saleContro');
 
 const app = express();
 
@@ -20,11 +21,17 @@ app.get('/', (_request, response) => {
   response.send();
 });
 
-app.post('/products', add);
-app.get('/products', getAll);
-app.get('/products/:id', getById);
-app.put('/products/:id', edit);
-app.delete('/products/:id', del);
+app.post('/products', productContro.add);
+app.get('/products', productContro.getAll);
+app.get('/products/:id', productContro.getById);
+app.put('/products/:id', productContro.edit);
+app.delete('/products/:id', productContro.del);
+
+app.post('/sales', saleContro.add);
+// app.get('/sales', getAll);
+// app.get('/sales/:id', getById);
+// app.put('/sales/:id', edit);
+// app.delete('/sales/:id', del);
 
 app.use((err, req, res, next) => {
   res.status(500).send({ error: `${err} ou algum erro interno` });

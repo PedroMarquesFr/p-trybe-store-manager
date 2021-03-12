@@ -10,7 +10,6 @@ const add = async (req, res) => {
 
 const getAll = async (req, res) => {
   productServ.getAll().then((r) => {
-    console.log('adsasdas', r);
     res.json(r);
   });
 };

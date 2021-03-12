@@ -17,7 +17,6 @@ const add = async (name, quantity) => {
   const isValid = validateNameQuantity(name, quantity);
 
   if (isValid.err) {
-    console.log('mano entra ai');
     return isValid;
   }
   const isNameAlreadyRegistered = await productModel.getByName(name);
@@ -59,7 +58,7 @@ const edit = async (name, quantity, id) => {
 
 const del = async (id) => {
   if (!checkForHexRegExp.test(id)) return errMessage('invalid_data', 'Wrong id format', 422);
-  
+
   const deletedElement = await productModel.del(id);
 
   if (!deletedElement) return errMessage('invalid_data', 'Wrong id format', 422);
