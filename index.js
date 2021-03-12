@@ -28,10 +28,10 @@ app.put('/products/:id', productContro.edit);
 app.delete('/products/:id', productContro.del);
 
 app.post('/sales', saleContro.add);
-// app.get('/sales', getAll);
-// app.get('/sales/:id', getById);
-// app.put('/sales/:id', edit);
-// app.delete('/sales/:id', del);
+app.get('/sales', saleContro.getAll);
+app.get('/sales/:id', saleContro.getById);
+app.put('/sales/:id', saleContro.edit);
+app.delete('/sales/:id', saleContro.del);
 
 app.use((err, req, res, next) => {
   res.status(500).send({ error: `${err} ou algum erro interno` });
